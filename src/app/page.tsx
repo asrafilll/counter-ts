@@ -1,4 +1,4 @@
-import CounterApp from '@/components/Counter/page';
+import { CounterApp } from '@/components/Counter/CounterApp';
 
 export default function Home() {
   return <CounterApp />;
