@@ -4,7 +4,8 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "airbnb",
-    "airbnb-typescript"
+    "airbnb-typescript",
+    "plugin:storybook/recommended"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -23,6 +24,7 @@
     "react/function-component-definition": "off",
     "react/button-has-type": "off",
     "react/prop-types": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "arrow-body-style": "off"
   }
 }

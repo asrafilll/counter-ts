@@ -1,20 +1,21 @@
 'use client';
 
-import { twMerge } from 'tailwind-merge';
 import { tv, type VariantProps } from 'tailwind-variants';
+import { twMerge } from 'tailwind-merge';
 
 const buttonStyle = tv({
-  base: 'tracking-tight font-medium bg-zinc-300 text-zinc-600 rounded-lg transition duration-200 ease-in-out',
+  base: 'px-8 py-2 rounded-full font-medium',
   variants: {
     variant: {
-      primary: 'bg-primary-600 text-primary-50 hover:bg-primary-700 active:bg-primary-800 ',
-      secondary:
-        'bg-secondary-100 text-secondary-700 hover:bg-secondary-200 active:bg-secondary-300',
+      primary: 'bg-primary-500 text-white',
+      secondary: 'bg-secondary-300 text-secondary-800',
+      bordered: 'border-[1px] border-secondary-800 text-secondary-800',
+      danger: 'bg-red-400 text-white',
     },
     size: {
-      sm: 'py-1 px-2 text-sm',
-      md: 'py-2 px-4 text-base',
-      lg: 'py-3 px-6 text-lg',
+      sm: 'text-sm',
+      md: 'text-base',
+      lg: 'text-lg',
     },
   },
   defaultVariants: {
@@ -23,13 +24,18 @@ const buttonStyle = tv({
   },
 });
 
-type ButtonProps = VariantProps<typeof buttonStyle>;
-type ButtonNativeProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonVarianProps = VariantProps<typeof buttonStyle>;
+type ButtonNativeProps = React.HTMLAttributes<HTMLButtonElement>;
 
-interface ButtonCombinedProps extends ButtonProps, ButtonNativeProps {}
+interface ButtonProps extends ButtonNativeProps, ButtonVarianProps {
+  className?: string;
+  children: React.ReactNode;
+}
 
-export const Button: React.FC<ButtonCombinedProps> = ({ className, ...props }) => (
-  <button className={twMerge(buttonStyle(props), className)} {...props}>
-    {props.children}
-  </button>
-);
+export const Button: React.FC<ButtonProps> = ({ className, ...props }) => {
+  return (
+    <button className={twMerge(buttonStyle(props), className)} {...props}>
+      {props.children}
+    </button>
+  );
+};

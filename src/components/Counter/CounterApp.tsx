@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Button } from '../button';
 
 export const CounterApp = () => {
   const [counter, setCounter] = useState(0);
@@ -13,20 +14,13 @@ export const CounterApp = () => {
       <div className="text-2xl">Counter App</div>
       <div className="text-4xl">{counter}</div>
       <div className="flex gap-8 justify-center">
-        <button
-          type="button"
-          className="px-8 py-2 bg-blue-400 text-white rounded-lg"
-          onClick={addCounter}
-        >
+        <Button variant="primary" size="sm" onClick={addCounter}>
           Add
-        </button>
-        <button
-          type="button"
-          className="px-8 py-2 bg-red-400 text-white rounded-lg"
-          onClick={decreaseCounter}
-        >
+        </Button>
+
+        <Button variant="danger" size="sm" onClick={decreaseCounter}>
           Decrease
-        </button>
+        </Button>
       </div>
     </div>
   );
